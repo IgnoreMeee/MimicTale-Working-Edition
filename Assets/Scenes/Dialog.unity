@@ -609,6 +609,7 @@ GameObject:
   - component: {fileID: 1503699506}
   - component: {fileID: 1503699505}
   - component: {fileID: 1503699509}
+  - component: {fileID: 1503699510}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -712,6 +713,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   textLabel: {fileID: 742588068}
+  testDialogue: {fileID: 11400000, guid: e05f5dfa33ca946d4a7eac871ef22a95, type: 2}
+  canva: {fileID: 1503699504}
+--- !u!114 &1503699510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503699504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1309cc9a7a13641488b1ea432b141691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TypeWriting
 --- !u!1 &1616643638
 GameObject:
   m_ObjectHideFlags: 0
