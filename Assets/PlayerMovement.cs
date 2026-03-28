@@ -1,3 +1,4 @@
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
@@ -10,6 +11,8 @@ public class PlayerCharacter : MonoBehaviour
     float playerVelX = 0f;
     float playerVelY = 0f;
     float playerVel = 5f; // units per second
+
+    public Vector3 playerPos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +24,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         PlayerMovement();
         Move();
+        playerPos = transform.position;
     }
 
     void Move()
