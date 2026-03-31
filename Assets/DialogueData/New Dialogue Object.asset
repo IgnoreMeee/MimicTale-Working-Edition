@@ -13,16 +13,9 @@ MonoBehaviour:
   m_Name: New Dialogue Object
   m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
   dialogue:
-  - 'blahhhhhhh
+  - 'Hi I am green box, what is your name? '
+  - "Nice to meet you white box. \nNice hair by the way."
+  - 'I gotta go.
 
-    blahhhhh'
-  - 'mooooo
-
-    moooooo
-
-    mooooo'
-  - 'woooooooof
-
-    woooooof
 
 '

@@ -4,7 +4,7 @@ using TMPro;
 
 public class TypeWriting : MonoBehaviour
 {
-    private float speed = 20f;
+    private float speed = 25f;
    public Coroutine Run(string textToType, TMP_Text textLabel)
     {
         return StartCoroutine(TypeText(textToType, textLabel));

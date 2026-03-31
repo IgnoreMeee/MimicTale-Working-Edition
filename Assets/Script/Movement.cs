@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed = 10f;
     [SerializeField] Rigidbody2D rb;
-    public GameObject dialogbox;
+    
 
     void FixedUpdate()
     {
@@ -14,12 +14,7 @@ public class Movement : MonoBehaviour
         rb.linearVelocity = new Vector2(moveX, moveY) * speed;
     }
 
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("talkbox") && Input.GetKeyDown(KeyCode.E))
-        {
-            dialogbox.SetActive(true);
-        }
-    }
+
+//if player is in a specific range close to the talkbox, [press E to talk] appear, if the player press E, start talking
 
 }
