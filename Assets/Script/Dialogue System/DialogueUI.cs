@@ -2,12 +2,15 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
     public static DialogueUI Instance;
+
     [SerializeField] private TMP_Text _textLabel;
-    public GameObject dialoguebox;
+    [SerializeField] private GameObject dialoguebox;
+    [SerializeField] private Image portraitImage;
 
     private TypeWriting typewriterEffect;
     private bool _isTalking = false;
@@ -16,7 +19,13 @@ public class DialogueUI : MonoBehaviour
  
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
+
         typewriterEffect = GetComponent<TypeWriting>();
     }
 
@@ -24,7 +33,8 @@ public class DialogueUI : MonoBehaviour
     {
         if (_isTalking) return;
         
-       
+        portraitImage.sprite = dialogueObject.portrait;
+
         StartCoroutine(StepThroughDialogue(dialogueObject, isMonster));//starts dialogue
     }
 
@@ -36,6 +46,7 @@ public class DialogueUI : MonoBehaviour
 
         foreach (string dialogue in dialogueObject.Dialogue)
         {
+            Debug.Log("Line: " + dialogue);
             yield return typewriterEffect.Run(dialogue, _textLabel); //animation
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
 

@@ -6,8 +6,8 @@ public class npc2Script : MonoBehaviour
     public GameObject talk;
     
     [SerializeField] float interactRange = 2f;
-
     private Transform player;
+
 
     void Start()
     {

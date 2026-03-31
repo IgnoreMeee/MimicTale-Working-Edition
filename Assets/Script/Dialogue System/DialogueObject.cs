@@ -15,4 +15,6 @@ public class DialogueObject : ScriptableObject
         }
     }
 
+    public Sprite portrait;
+
 }

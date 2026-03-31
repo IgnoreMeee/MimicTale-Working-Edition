@@ -15,3 +15,4 @@ MonoBehaviour:
   dialogue:
   - YOU WANNA FIGHT???
   - HAHAHAHHAHAHHAHA
+  portrait: {fileID: -443373679, guid: 141d2cb3bdb872f499fd1f1be1ff0d8d, type: 3}
