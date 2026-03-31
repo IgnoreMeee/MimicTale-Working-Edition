@@ -1,30 +1,49 @@
-using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerCharacter : MonoBehaviour
 
     {
+    
+    Vector3Int currentCell;
+    public Tilemap tilemap;
+    public Tilemap collidables;
+
+    float collisionUp;
+    float collisionDown;
+    float collisionRight;
+    float collisionLeft;
+
     int prevSecond = 0;
     bool isMovingX = false;
     bool isMovingY = false;
 
     float playerVelX = 0f;
     float playerVelY = 0f;
-    float playerVel = 5f; // units per second
+    float playerVel = 5f;
+
+    float playerHalfWidth = 0.45f;
+    float playerHalfHeight = 0.45f;
 
     public Vector3 playerPos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerTilePos();
+        Collisions();
+        FixCollisions();
         PlayerMovement();
         Move();
+
         playerPos = transform.position;
+
+        Debug.Log("(" + GetPlayerX() + ", " + GetPlayerY() + ")" + " " + collisionUp + " " + collisionDown + " " + collisionRight + " " + collisionLeft);
     }
 
     void Move()
@@ -39,17 +58,23 @@ public class PlayerCharacter : MonoBehaviour
         playerVelY = 0f;
 
         if (Input.GetKey(KeyCode.W))
-            playerVelY += playerVel;
-        if (Input.GetKey(KeyCode.S))
-            playerVelY += -playerVel;
+            if (transform.position.y < collisionUp) {
+            playerVelY += playerVel;}
 
-        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
-            playerVelY = 0f;
+         if (Input.GetKey(KeyCode.S))
+            if (transform.position.y > collisionDown) {
+                playerVelY += -playerVel;}
+
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) {
+            playerVelY = 0f;}
 
         if (Input.GetKey(KeyCode.A))
-            playerVelX += -playerVel;
+            if (transform.position.x > collisionLeft) {
+                playerVelX += -playerVel;}
+
         if (Input.GetKey(KeyCode.D))
-            playerVelX += playerVel;
+            if (transform.position.x < collisionRight) {
+                playerVelX += playerVel;}
 
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
             playerVelX = 0f;
@@ -65,4 +90,73 @@ public class PlayerCharacter : MonoBehaviour
     {
         return transform.position.y;
     }
+
+    public void PlayerTilePos()
+    {
+        currentCell = tilemap.WorldToCell(transform.position);
+        Debug.Log(currentCell);
+    }
+
+    public void Collisions()
+    {
+        Vector3 scaledCellSize = Vector3.Scale(tilemap.cellSize, tilemap.transform.lossyScale);
+        
+        float halfCellWidth = Mathf.Abs(scaledCellSize.x) * 0.5f;
+        float halfCellHeight = Mathf.Abs(scaledCellSize.y) * 0.5f;
+
+        Vector3Int upCell = currentCell + Vector3Int.up;
+        Vector3Int downCell = currentCell + Vector3Int.down;
+        Vector3Int rightCell = currentCell + Vector3Int.right;
+        Vector3Int leftCell = currentCell + Vector3Int.left;
+
+        if (collidables.GetTile(upCell) != null) {
+            float blockedTileBottom = tilemap.GetCellCenterWorld(upCell).y - halfCellHeight;
+            collisionUp = blockedTileBottom - playerHalfHeight;
+        } else {
+            collisionUp = float.PositiveInfinity;
+        }
+
+        if (collidables.GetTile(downCell) != null) {
+            float blockedTileTop = tilemap.GetCellCenterWorld(downCell).y + halfCellHeight;
+            collisionDown = blockedTileTop + playerHalfHeight;
+        } else {
+            collisionDown = float.NegativeInfinity;
+        }
+
+        if (collidables.GetTile(rightCell) != null) {
+            float blockedTileLeft = tilemap.GetCellCenterWorld(rightCell).x - halfCellWidth;
+            collisionRight = blockedTileLeft - playerHalfWidth;
+        } else {
+            collisionRight = float.PositiveInfinity;
+        }
+
+        if (collidables.GetTile(leftCell) != null) {
+            float blockedTileRight = tilemap.GetCellCenterWorld(leftCell).x + halfCellWidth;
+            collisionLeft = blockedTileRight + playerHalfWidth;
+        } else {
+            collisionLeft = float.NegativeInfinity;
+        }
+
+
+    }
+
+    void FixCollisions()
+    {
+        if (transform.position.y > collisionUp) {
+            transform.position = new Vector3(transform.position.x, collisionUp, transform.position.z);
+        }
+
+        if (transform.position.y < collisionDown) {
+            transform.position = new Vector3(transform.position.x, collisionDown, transform.position.z);
+        }
+
+        if (transform.position.x > collisionRight) {
+            transform.position = new Vector3(collisionRight, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x < collisionLeft) {
+            transform.position = new Vector3(collisionLeft, transform.position.y, transform.position.z);
+        }
+    }
 }
+
