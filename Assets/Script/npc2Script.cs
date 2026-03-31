@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class npcScript : MonoBehaviour
+public class npc2Script : MonoBehaviour
 {
     [SerializeField] private DialogueObject _dialogueContent;
     public GameObject talk;
@@ -23,10 +23,10 @@ public class npcScript : MonoBehaviour
         {
             talk.SetActive(true); 
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 player.position = new Vector3(transform.position.x - 3, transform.position.y, 0f);
-                DialogueUI.Instance.StartDialogue(_dialogueContent);
+                DialogueUI.Instance.StartDialogue(_dialogueContent, true);
             }
         }
         else

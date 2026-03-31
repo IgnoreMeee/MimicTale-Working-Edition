@@ -1,6 +1,7 @@
 using System.Collections; 
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -19,13 +20,16 @@ public class DialogueUI : MonoBehaviour
         typewriterEffect = GetComponent<TypeWriting>();
     }
 
-    public void StartDialogue(DialogueObject dialogueObject)
+    public void StartDialogue(DialogueObject dialogueObject, bool isMonster)
     {
         if (_isTalking) return;
-        StartCoroutine(StepThroughDialogue(dialogueObject));//starts dialogue
+        
+       
+        StartCoroutine(StepThroughDialogue(dialogueObject, isMonster));//starts dialogue
     }
 
-    private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
+    //for normal conversation
+    private IEnumerator StepThroughDialogue(DialogueObject dialogueObject, bool isMonster)
     {
         _isTalking = true;
         dialoguebox.SetActive(true);
@@ -33,11 +37,18 @@ public class DialogueUI : MonoBehaviour
         foreach (string dialogue in dialogueObject.Dialogue)
         {
             yield return typewriterEffect.Run(dialogue, _textLabel); //animation
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
 
         }
         _isTalking = false;
-        dialoguebox.SetActive(false);
+        
+        if (isMonster)
+        {
+            dialoguebox.SetActive(false);
+            SceneManager.LoadScene("SampleScene");
+            
+        } else {dialoguebox.SetActive(false);}
+        
         
     }
 
