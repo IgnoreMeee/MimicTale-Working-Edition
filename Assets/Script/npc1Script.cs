@@ -8,7 +8,6 @@ public class npc1Script : MonoBehaviour
     private Transform player;
 
 
-
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;

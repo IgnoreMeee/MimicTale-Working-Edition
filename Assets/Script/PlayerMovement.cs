@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerCharacter : MonoBehaviour
 
     {
     
@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public Tilemap collidables;
     public Tilemap collectables;
     public TileBase weapon;
-
 
     float collisionUp;
     float collisionDown;
@@ -28,9 +27,10 @@ public class PlayerMovement : MonoBehaviour
     float playerHalfWidth = 0.45f;
     float playerHalfHeight = 0.45f;
 
+    public Vector3 playerPos;
+
     int getWeapon = 1;
 
-    public Vector3 playerPos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,14 +43,14 @@ public class PlayerMovement : MonoBehaviour
         PlayerTilePos();
         Collisions();
         FixCollisions();
-        PlayerMovements();
+        PlayerMovement();
         Move();
 
         CheckItemPickup();
 
         playerPos = transform.position;
 
-        Debug.Log("(" + GetPlayerX() + ", " + GetPlayerY() + ")" + " " + collisionUp + " " + collisionDown + " " + collisionRight + " " + collisionLeft);
+        // Debug.Log("(" + GetPlayerX() + ", " + GetPlayerY() + ")" + " " + collisionUp + " " + collisionDown + " " + collisionRight + " " + collisionLeft);
     }
 
     void Move()
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void PlayerMovements()
+    void PlayerMovement()
     {
         playerVelX = 0f;
         playerVelY = 0f;
@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
     public void PlayerTilePos()
     {
         currentCell = tilemap.WorldToCell(transform.position);
-        Debug.Log(currentCell);
+        // Debug.Log(currentCell);
     }
 
     public void Collisions()
@@ -165,8 +165,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(collisionLeft, transform.position.y, transform.position.z);
         }
     }
-
-    void CheckItemPickup()
+ void CheckItemPickup()
 {
     Vector3Int cell = tilemap.WorldToCell(transform.position);
     TileBase tile = collectables.GetTile(cell);
