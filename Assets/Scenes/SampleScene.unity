@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   holdMoveDelay: 0.14
-  moveLerpSpeed: 12
+  moveLerpSpeed: 15
   tilemap: {fileID: 0}
 --- !u!61 &778449112
 BoxCollider2D:
