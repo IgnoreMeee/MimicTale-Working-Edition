@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerCharacter : MonoBehaviour
-
-    {
+{
     
     Vector3Int currentCell;
     public Tilemap tilemap;
@@ -42,11 +41,12 @@ public class PlayerCharacter : MonoBehaviour
     {
         PlayerTilePos();
         Collisions();
+        GetItemPickup();
         FixCollisions();
         PlayerMovement();
         Move();
 
-        CheckItemPickup();
+        // CheckItemPickup();
 
         playerPos = transform.position;
 
@@ -165,20 +165,99 @@ public class PlayerCharacter : MonoBehaviour
             transform.position = new Vector3(collisionLeft, transform.position.y, transform.position.z);
         }
     }
- void CheckItemPickup()
-{
-    Vector3Int cell = tilemap.WorldToCell(transform.position);
-    TileBase tile = collectables.GetTile(cell);
 
-    if (tile == null) return;
 
-    if (tile == weapon)
+public void GetItemPickup()
     {
-        getWeapon += 1;
-        Debug.Log("You got a weapon !!!");
+        Vector3 scaledCellSize = Vector3.Scale(tilemap.cellSize, tilemap.transform.lossyScale);
+        
+        float halfCellWidth = Mathf.Abs(scaledCellSize.x) * 0.5f;
+        float halfCellHeight = Mathf.Abs(scaledCellSize.y) * 0.5f;
+
+        Vector3Int upCell = currentCell + Vector3Int.up;
+        Vector3Int downCell = currentCell + Vector3Int.down;
+        Vector3Int rightCell = currentCell + Vector3Int.right;
+        Vector3Int leftCell = currentCell + Vector3Int.left;
+
+        if (collectables.GetTile(upCell) != null) {
+            float blockedTileBottom = tilemap.GetCellCenterWorld(upCell).y - halfCellHeight;
+            collisionUp = blockedTileBottom - playerHalfHeight;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                getWeapon += 1;
+                Debug.Log("You got a weapon !!!");
+                collectables.SetTile(upCell, null);
+            }
+        } else {
+            collisionUp = float.PositiveInfinity;
+        }
+
+        if (collectables.GetTile(downCell) != null) {
+            float blockedTileTop = tilemap.GetCellCenterWorld(downCell).y + halfCellHeight;
+            collisionDown = blockedTileTop + playerHalfHeight;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                getWeapon += 1;
+                Debug.Log("You got a weapon !!!");
+                collectables.SetTile(downCell, null);
+            }
+        } else {
+            collisionDown = float.NegativeInfinity;
+        }
+
+        if (collectables.GetTile(rightCell) != null) {
+            float blockedTileLeft = tilemap.GetCellCenterWorld(rightCell).x - halfCellWidth;
+            collisionRight = blockedTileLeft - playerHalfWidth;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                getWeapon += 1;
+                Debug.Log("You got a weapon !!!");
+                collectables.SetTile(rightCell, null);
+            }
+        } else {
+            collisionRight = float.PositiveInfinity;
+        }
+
+        if (collectables.GetTile(leftCell) != null) {
+            float blockedTileRight = tilemap.GetCellCenterWorld(leftCell).x + halfCellWidth;
+            collisionLeft = blockedTileRight + playerHalfWidth;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                getWeapon += 1;
+                Debug.Log("You got a weapon !!!");
+                collectables.SetTile(leftCell, null);
+            }
+        } else {
+            collisionLeft = float.NegativeInfinity;
+        }
+        
     }
 
-    collectables.SetTile(cell, null);
-}
-}
+//     void CheckItemPickup()
+// {
+//     if (!Input.GetKeyDown(KeyCode.F)) return;
 
+//     Vector3Int[] directions = {
+//         currentCell,
+//         currentCell + Vector3Int.up,
+//         currentCell + Vector3Int.down,
+//         currentCell + Vector3Int.left,
+//         currentCell + Vector3Int.right
+//     };
+
+//     foreach (Vector3Int cell in directions)
+//     {
+//         TileBase tile = collectables.GetTile(cell);
+
+//         if (tile == weapon)
+//         {
+//             getWeapon += 1;
+//             Debug.Log("You got a weapon !!!");
+//         }
+
+//         collectables.SetTile(cell, null);
+//         break; 
+//     }
+// }
+
+}
