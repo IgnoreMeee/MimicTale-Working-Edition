@@ -4,10 +4,10 @@ using UnityEngine.Tilemaps;
 public class PlayerCharacter : MonoBehaviour
 {
     
-    Vector3Int currentCell;
     public Tilemap tilemap;
     public Tilemap collidables;
     public Tilemap collectables;
+    public Tilemap stones;
     public TileBase weapon;
 
     float collisionUp;
@@ -27,6 +27,10 @@ public class PlayerCharacter : MonoBehaviour
     float playerHalfHeight = 0.45f;
 
     public Vector3 playerPos;
+    Vector3Int currentCell;
+    
+    Vector3Int facingDir = Vector3Int.down;
+
 
     int getWeapon = 1;
 
@@ -42,15 +46,27 @@ public class PlayerCharacter : MonoBehaviour
         PlayerTilePos();
         Collisions();
         GetItemPickup();
+        StoneCollision();
+
         FixCollisions();
         PlayerMovement();
         Move();
 
-        // CheckItemPickup();
-
         playerPos = transform.position;
 
-        // Debug.Log("(" + GetPlayerX() + ", " + GetPlayerY() + ")" + " " + collisionUp + " " + collisionDown + " " + collisionRight + " " + collisionLeft);
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        if (moveX > 0)
+        {
+            facingDir = Vector3Int.right;
+        } else if (moveX < 0){
+            facingDir = Vector3Int.left;
+        } else if (moveY > 0){
+            facingDir = Vector3Int.up;
+        } else if (moveY < 0){
+            facingDir = Vector3Int.down;
+        }
     }
 
     void Move()
@@ -232,6 +248,68 @@ public void GetItemPickup()
         }
         
     }
+
+public void StoneCollision()
+    {
+        Vector3 scaledCellSize = Vector3.Scale(tilemap.cellSize, tilemap.transform.lossyScale);
+        
+        float halfCellWidth = Mathf.Abs(scaledCellSize.x) * 0.5f;
+        float halfCellHeight = Mathf.Abs(scaledCellSize.y) * 0.5f;
+
+        Vector3Int upCell = currentCell + Vector3Int.up;
+        Vector3Int downCell = currentCell + Vector3Int.down;
+        Vector3Int rightCell = currentCell + Vector3Int.right;
+        Vector3Int leftCell = currentCell + Vector3Int.left;
+
+        if (stones.GetTile(upCell) != null) {
+            float blockedTileBottom = tilemap.GetCellCenterWorld(upCell).y - halfCellHeight;
+            collisionUp = blockedTileBottom - playerHalfHeight;
+        } else {
+            collisionUp = float.PositiveInfinity;
+        }
+
+        if (stones.GetTile(downCell) != null) {
+            float blockedTileTop = tilemap.GetCellCenterWorld(downCell).y + halfCellHeight;
+            collisionDown = blockedTileTop + playerHalfHeight;
+        } else {
+            collisionDown = float.NegativeInfinity;
+        }
+
+        if (stones.GetTile(rightCell) != null) {
+            float blockedTileLeft = tilemap.GetCellCenterWorld(rightCell).x - halfCellWidth;
+            collisionRight = blockedTileLeft - playerHalfWidth;
+        } else {
+            collisionRight = float.PositiveInfinity;
+        }
+
+        if (stones.GetTile(leftCell) != null) {
+            float blockedTileRight = tilemap.GetCellCenterWorld(leftCell).x + halfCellWidth;
+            collisionLeft = blockedTileRight + playerHalfWidth;
+        } else {
+            collisionLeft = float.NegativeInfinity;
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            PushStone(facingDir);
+        }
+
+    }
+void PushStone(Vector3Int dir)
+{
+    Vector3Int stonePos = currentCell + dir;
+
+    if (stones.GetTile(stonePos) == null) return;
+
+    // getting the new location
+    Vector3Int targetPos = stonePos + dir;
+
+    //push
+    TileBase stone = stones.GetTile(stonePos);
+    stones.SetTile(stonePos, null);
+    stones.SetTile(targetPos, stone);
+}
+
+
 
 //     void CheckItemPickup()
 // {

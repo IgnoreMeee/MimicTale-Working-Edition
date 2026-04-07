@@ -17,6 +17,7 @@ public class TypeWriting : MonoBehaviour
 
          while (charIndex < textToType.Length)
         {
+
             t += Time.deltaTime * speed;
             charIndex = Mathf.FloorToInt(t);
             charIndex = Mathf.Clamp(charIndex, 0, textToType.Length);
