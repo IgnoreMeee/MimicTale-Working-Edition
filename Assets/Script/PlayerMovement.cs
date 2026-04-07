@@ -45,8 +45,9 @@ public class PlayerCharacter : MonoBehaviour
     {
         PlayerTilePos();
         Collisions();
-        GetItemPickup();
-        StoneCollision();
+        // GetItemPickup();
+        // StoneCollision();
+        HandleInteraction();
 
         FixCollisions();
         PlayerMovement();
@@ -54,6 +55,8 @@ public class PlayerCharacter : MonoBehaviour
 
         playerPos = transform.position;
 
+
+        // identify which direction player is facing
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -132,28 +135,28 @@ public class PlayerCharacter : MonoBehaviour
         Vector3Int rightCell = currentCell + Vector3Int.right;
         Vector3Int leftCell = currentCell + Vector3Int.left;
 
-        if (collidables.GetTile(upCell) != null) {
+        if (collidables.GetTile(upCell) != null || collectables.GetTile(upCell) != null || stones.GetTile(upCell) != null) {
             float blockedTileBottom = tilemap.GetCellCenterWorld(upCell).y - halfCellHeight;
             collisionUp = blockedTileBottom - playerHalfHeight;
         } else {
             collisionUp = float.PositiveInfinity;
         }
 
-        if (collidables.GetTile(downCell) != null) {
+        if (collidables.GetTile(downCell) != null || collectables.GetTile(downCell) != null || stones.GetTile(downCell) != null) {
             float blockedTileTop = tilemap.GetCellCenterWorld(downCell).y + halfCellHeight;
             collisionDown = blockedTileTop + playerHalfHeight;
         } else {
             collisionDown = float.NegativeInfinity;
         }
 
-        if (collidables.GetTile(rightCell) != null) {
+        if (collidables.GetTile(rightCell) != null || collectables.GetTile(rightCell) != null || stones.GetTile(rightCell) != null) {
             float blockedTileLeft = tilemap.GetCellCenterWorld(rightCell).x - halfCellWidth;
             collisionRight = blockedTileLeft - playerHalfWidth;
         } else {
             collisionRight = float.PositiveInfinity;
         }
 
-        if (collidables.GetTile(leftCell) != null) {
+        if (collidables.GetTile(leftCell) != null || collectables.GetTile(leftCell) != null || stones.GetTile(leftCell) != null) {
             float blockedTileRight = tilemap.GetCellCenterWorld(leftCell).x + halfCellWidth;
             collisionLeft = blockedTileRight + playerHalfWidth;
         } else {
@@ -183,159 +186,44 @@ public class PlayerCharacter : MonoBehaviour
     }
 
 
-public void GetItemPickup()
+void HandleInteraction()
+{
+    if (!Input.GetKeyDown(KeyCode.F)) return;
+
+    Vector3Int targetCell = currentCell + facingDir;
+
+    if (collectables.GetTile(targetCell) != null)
     {
-        Vector3 scaledCellSize = Vector3.Scale(tilemap.cellSize, tilemap.transform.lossyScale);
-        
-        float halfCellWidth = Mathf.Abs(scaledCellSize.x) * 0.5f;
-        float halfCellHeight = Mathf.Abs(scaledCellSize.y) * 0.5f;
-
-        Vector3Int upCell = currentCell + Vector3Int.up;
-        Vector3Int downCell = currentCell + Vector3Int.down;
-        Vector3Int rightCell = currentCell + Vector3Int.right;
-        Vector3Int leftCell = currentCell + Vector3Int.left;
-
-        if (collectables.GetTile(upCell) != null) {
-            float blockedTileBottom = tilemap.GetCellCenterWorld(upCell).y - halfCellHeight;
-            collisionUp = blockedTileBottom - playerHalfHeight;
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                getWeapon += 1;
-                Debug.Log("You got a weapon !!!");
-                collectables.SetTile(upCell, null);
-            }
-        } else {
-            collisionUp = float.PositiveInfinity;
-        }
-
-        if (collectables.GetTile(downCell) != null) {
-            float blockedTileTop = tilemap.GetCellCenterWorld(downCell).y + halfCellHeight;
-            collisionDown = blockedTileTop + playerHalfHeight;
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                getWeapon += 1;
-                Debug.Log("You got a weapon !!!");
-                collectables.SetTile(downCell, null);
-            }
-        } else {
-            collisionDown = float.NegativeInfinity;
-        }
-
-        if (collectables.GetTile(rightCell) != null) {
-            float blockedTileLeft = tilemap.GetCellCenterWorld(rightCell).x - halfCellWidth;
-            collisionRight = blockedTileLeft - playerHalfWidth;
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                getWeapon += 1;
-                Debug.Log("You got a weapon !!!");
-                collectables.SetTile(rightCell, null);
-            }
-        } else {
-            collisionRight = float.PositiveInfinity;
-        }
-
-        if (collectables.GetTile(leftCell) != null) {
-            float blockedTileRight = tilemap.GetCellCenterWorld(leftCell).x + halfCellWidth;
-            collisionLeft = blockedTileRight + playerHalfWidth;
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                getWeapon += 1;
-                Debug.Log("You got a weapon !!!");
-                collectables.SetTile(leftCell, null);
-            }
-        } else {
-            collisionLeft = float.NegativeInfinity;
-        }
-        
+        getWeapon += 1;
+        Debug.Log("You got a weapon!");
+        collectables.SetTile(targetCell, null);
+        return;
     }
 
-public void StoneCollision()
+    if (stones.GetTile(targetCell) != null)
     {
-        Vector3 scaledCellSize = Vector3.Scale(tilemap.cellSize, tilemap.transform.lossyScale);
-        
-        float halfCellWidth = Mathf.Abs(scaledCellSize.x) * 0.5f;
-        float halfCellHeight = Mathf.Abs(scaledCellSize.y) * 0.5f;
-
-        Vector3Int upCell = currentCell + Vector3Int.up;
-        Vector3Int downCell = currentCell + Vector3Int.down;
-        Vector3Int rightCell = currentCell + Vector3Int.right;
-        Vector3Int leftCell = currentCell + Vector3Int.left;
-
-        if (stones.GetTile(upCell) != null) {
-            float blockedTileBottom = tilemap.GetCellCenterWorld(upCell).y - halfCellHeight;
-            collisionUp = blockedTileBottom - playerHalfHeight;
-        } else {
-            collisionUp = float.PositiveInfinity;
-        }
-
-        if (stones.GetTile(downCell) != null) {
-            float blockedTileTop = tilemap.GetCellCenterWorld(downCell).y + halfCellHeight;
-            collisionDown = blockedTileTop + playerHalfHeight;
-        } else {
-            collisionDown = float.NegativeInfinity;
-        }
-
-        if (stones.GetTile(rightCell) != null) {
-            float blockedTileLeft = tilemap.GetCellCenterWorld(rightCell).x - halfCellWidth;
-            collisionRight = blockedTileLeft - playerHalfWidth;
-        } else {
-            collisionRight = float.PositiveInfinity;
-        }
-
-        if (stones.GetTile(leftCell) != null) {
-            float blockedTileRight = tilemap.GetCellCenterWorld(leftCell).x + halfCellWidth;
-            collisionLeft = blockedTileRight + playerHalfWidth;
-        } else {
-            collisionLeft = float.NegativeInfinity;
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            PushStone(facingDir);
-        }
-
+        PushStone(facingDir);
     }
+}
+
+
 void PushStone(Vector3Int dir)
 {
+
     Vector3Int stonePos = currentCell + dir;
-
-    if (stones.GetTile(stonePos) == null) return;
-
     // getting the new location
     Vector3Int targetPos = stonePos + dir;
+
+     if (stones.GetTile(stonePos) == null) return;
+
+    // no override allowed!!!!
+    if (stones.GetTile(targetPos) != null) return;
+    if (collidables.GetTile(targetPos) != null) return;
 
     //push
     TileBase stone = stones.GetTile(stonePos);
     stones.SetTile(stonePos, null);
     stones.SetTile(targetPos, stone);
 }
-
-
-
-//     void CheckItemPickup()
-// {
-//     if (!Input.GetKeyDown(KeyCode.F)) return;
-
-//     Vector3Int[] directions = {
-//         currentCell,
-//         currentCell + Vector3Int.up,
-//         currentCell + Vector3Int.down,
-//         currentCell + Vector3Int.left,
-//         currentCell + Vector3Int.right
-//     };
-
-//     foreach (Vector3Int cell in directions)
-//     {
-//         TileBase tile = collectables.GetTile(cell);
-
-//         if (tile == weapon)
-//         {
-//             getWeapon += 1;
-//             Debug.Log("You got a weapon !!!");
-//         }
-
-//         collectables.SetTile(cell, null);
-//         break; 
-//     }
-// }
 
 }
