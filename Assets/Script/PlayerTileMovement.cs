@@ -99,4 +99,6 @@ public class Player : MonoBehaviour
         Move(direction);
         moveCooldown = holdMoveDelay;
     }
+
+    
 }

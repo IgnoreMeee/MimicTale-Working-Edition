@@ -1,12 +1,16 @@
 using System.Collections; 
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
     public static DialogueUI Instance;
+
     [SerializeField] private TMP_Text _textLabel;
-    public GameObject dialoguebox;
+    [SerializeField] private GameObject dialoguebox;
+    [SerializeField] private Image portraitImage;
 
     private TypeWriting typewriterEffect;
     private bool _isTalking = false;
@@ -15,29 +19,48 @@ public class DialogueUI : MonoBehaviour
  
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
+
         typewriterEffect = GetComponent<TypeWriting>();
     }
 
-    public void StartDialogue(DialogueObject dialogueObject)
+    public void StartDialogue(DialogueObject dialogueObject, bool isMonster)
     {
         if (_isTalking) return;
-        StartCoroutine(StepThroughDialogue(dialogueObject));//starts dialogue
+        
+        portraitImage.sprite = dialogueObject.portrait;
+
+        StartCoroutine(StepThroughDialogue(dialogueObject, isMonster));//starts dialogue
     }
 
-    private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
+    //for normal conversation
+    private IEnumerator StepThroughDialogue(DialogueObject dialogueObject, bool isMonster)
     {
         _isTalking = true;
         dialoguebox.SetActive(true);
 
         foreach (string dialogue in dialogueObject.Dialogue)
         {
+            Debug.Log("Line: " + dialogue);
             yield return typewriterEffect.Run(dialogue, _textLabel); //animation
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
 
         }
         _isTalking = false;
-        dialoguebox.SetActive(false);
+        
+        if (isMonster)
+        {
+            dialoguebox.SetActive(false);
+            SceneManager.LoadScene("SampleScene");
+            
+        } else {dialoguebox.SetActive(false);}
+        
         
     }
 

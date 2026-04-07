@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d3e5d254f814630af75a3ff5cadf10, type: 3}
+  m_Name: fight
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
+  dialogue:
+  - YOU WANNA FIGHT???
+  - HAHAHAHHAHAHHAHA
+  portrait: {fileID: -443373679, guid: 141d2cb3bdb872f499fd1f1be1ff0d8d, type: 3}
