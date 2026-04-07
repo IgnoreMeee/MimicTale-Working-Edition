@@ -48,6 +48,7 @@ public class DialogueUI : MonoBehaviour
         {
             Debug.Log("Line: " + dialogue);
             yield return typewriterEffect.Run(dialogue, _textLabel); //animation
+
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
 
         }
