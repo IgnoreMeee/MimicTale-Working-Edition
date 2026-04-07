@@ -8,7 +8,8 @@ public class PlayerCharacter : MonoBehaviour
     public Tilemap collidables;
     public Tilemap collectables;
     public Tilemap stones;
-    public TileBase weapon;
+    public TileBase stick;
+    public TileBase pizza;
 
     float collisionUp;
     float collisionDown;
@@ -45,8 +46,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         PlayerTilePos();
         Collisions();
-        // GetItemPickup();
-        // StoneCollision();
+        
         HandleInteraction();
 
         FixCollisions();
@@ -191,11 +191,22 @@ void HandleInteraction()
     if (!Input.GetKeyDown(KeyCode.F)) return;
 
     Vector3Int targetCell = currentCell + facingDir;
+    TileBase tile = collectables.GetTile(targetCell);
 
-    if (collectables.GetTile(targetCell) != null)
+    if (tile != null )
     {
-        getWeapon += 1;
-        Debug.Log("You got a weapon!");
+        if (tile == stick)
+            {
+                getWeapon += 1;
+                Debug.Log("You got a weapon!");
+            }
+        if (tile == pizza)
+            {
+                {
+                getWeapon += 1;
+                Debug.Log("You got a pizza!");
+                }
+            }
         collectables.SetTile(targetCell, null);
         return;
     }
@@ -219,6 +230,7 @@ void PushStone(Vector3Int dir)
     // no override allowed!!!!
     if (stones.GetTile(targetPos) != null) return;
     if (collidables.GetTile(targetPos) != null) return;
+    if (collectables.GetTile(targetPos) != null) return;
 
     //push
     TileBase stone = stones.GetTile(stonePos);
