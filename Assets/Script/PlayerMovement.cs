@@ -10,6 +10,7 @@ public class PlayerCharacter : MonoBehaviour
     public Tilemap stones;
     public TileBase stick;
     public TileBase pizza;
+    public TileBase key;
     public TileBase plate1;
     public TileBase plate2;
 
@@ -35,6 +36,7 @@ public class PlayerCharacter : MonoBehaviour
     Vector3Int facingDir = Vector3Int.down;
 
     Vector3Int puzzle1door = new Vector3Int(54, 4, 0);
+    Vector3Int puzzle2door = new Vector3Int(-62, 4, 0);
 
 
     int getWeapon = 1;
@@ -44,6 +46,7 @@ public class PlayerCharacter : MonoBehaviour
     //Collectable Events
     public event Action addPizzaevent;
     public event Action addStickevent;
+    public event Action addKeyevent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -217,6 +220,11 @@ void HandleInteraction()
                 Debug.Log("You got a pizza!");
                 }
             }
+        if (tile == key)
+            {
+                addKeyevent.Invoke();
+                Debug.Log("You got a key!");
+            }
         collectables.SetTile(targetCell, null);
         return;
     }
@@ -251,10 +259,16 @@ void PushStone(Vector3Int dir)
             collidables.SetTile(puzzle1door, null);
             puzzle1door.y -= 2;
             collidables.SetTile(puzzle1door, null);
+            puzzle1door.y++;
         }
     if(tilemap.GetTile(targetPos) == plate2)
         {
-            
+            collidables.SetTile(puzzle2door, null);
+            puzzle2door.y++;
+            collidables.SetTile(puzzle2door, null);
+            puzzle2door.y -= 2;
+            collidables.SetTile(puzzle2door, null);
+            puzzle2door.y++;
         }
 
     //push

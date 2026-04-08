@@ -37,6 +37,7 @@ public class inventorycontroller : MonoBehaviour
     //Collectable Initialization
     public int stick;
     public int pizza;
+    public int key;
 
     [SerializeField] private PlayerCharacter Sender;
     public string[] Items;
@@ -50,6 +51,7 @@ public class inventorycontroller : MonoBehaviour
         
         Sender.addStickevent += addStick;
         Sender.addPizzaevent += addPizza;
+        Sender.addKeyevent += addKey;
         
     
     }   
@@ -105,6 +107,19 @@ public class inventorycontroller : MonoBehaviour
         
     }
 
+    public void addKey()
+    {
+        if (Items.Contains("key"))
+        {
+
+        }
+        else
+        {
+            Items = Items.Append("key").ToArray();
+        }
+        key += 1;
+    }
+
     void checkItem1()
     {
         if(Items.Length > 0)
@@ -113,6 +128,9 @@ public class inventorycontroller : MonoBehaviour
                 item1count = stick;
             }else if(Items[0] == "pizza"){
                 item1count = pizza;
+            }else if(Items[0] == "key")
+            {
+                item1count = key;
             } 
             item1.text = Items[0] + " x" + item1count;
         }
@@ -128,6 +146,8 @@ public class inventorycontroller : MonoBehaviour
             }else if(Items[1] == "pizza")
             {
                 item2count = pizza;
+            }else if(Items[1] == "key"){
+                item2count = key;
             } 
             item2.text = Items[1] + " x" + item2count;
         }
@@ -142,6 +162,8 @@ public class inventorycontroller : MonoBehaviour
             }else if(Items[2] == "pizza")
             {
                 item3count = pizza;
+            } else if(Items[2] == "key"){
+                item3count = key;
             } 
             item3.text = Items[2] + " x" + item3count;
         }
@@ -156,6 +178,8 @@ public class inventorycontroller : MonoBehaviour
             }else if(Items[3] == "pizza")
             {
                 item4count = pizza;
+            } else if(Items[3] == "key"){
+                item4count = key;
             } 
             item4.text = Items[3] + " x" + item4count;
         }
