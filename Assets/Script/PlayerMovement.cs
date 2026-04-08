@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Tilemaps;
 
 public class PlayerCharacter : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerCharacter : MonoBehaviour
     public TileBase key;
     public TileBase plate1;
     public TileBase plate2;
+    public TileBase stone;
+    public TileBase redo;
 
     float collisionUp;
     float collisionDown;
@@ -37,6 +40,10 @@ public class PlayerCharacter : MonoBehaviour
 
     Vector3Int puzzle1door = new Vector3Int(54, 4, 0);
     Vector3Int puzzle2door = new Vector3Int(-62, 4, 0);
+
+    Vector3Int currentStonePos;
+    Vector3Int originalStone1Pos = new Vector3Int(41, 4, 0);
+    Vector3Int originalStone2Pos = new Vector3Int(-46, 4, 0);
 
 
     int getWeapon = 1;
@@ -205,6 +212,7 @@ void HandleInteraction()
 
     Vector3Int targetCell = currentCell + facingDir;
     TileBase tile = collectables.GetTile(targetCell);
+    TileBase redobutton = collidables.GetTile(targetCell);
 
     if (tile != null )
     {
@@ -229,6 +237,14 @@ void HandleInteraction()
         return;
     }
 
+    if(redobutton == redo)
+        {
+            stones.SetTile(currentStonePos, null);
+            stones.SetTile(originalStone1Pos, stone);
+            stones.SetTile(originalStone2Pos, stone);
+            Debug.Log(currentStonePos);
+        }
+
     if (stones.GetTile(targetCell) != null)
     {
         PushStone(facingDir);
@@ -242,6 +258,7 @@ void PushStone(Vector3Int dir)
     Vector3Int stonePos = currentCell + dir;
     // getting the new location
     Vector3Int targetPos = stonePos + dir;
+    
 
      if (stones.GetTile(stonePos) == null) return;
 
@@ -275,6 +292,7 @@ void PushStone(Vector3Int dir)
     TileBase stone = stones.GetTile(stonePos);
     stones.SetTile(stonePos, null);
     stones.SetTile(targetPos, stone);
+    currentStonePos = targetPos;
 }
 
 }
