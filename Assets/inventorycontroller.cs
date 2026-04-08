@@ -38,7 +38,7 @@ public class inventorycontroller : MonoBehaviour
     public int stick;
     public int pizza;
 
-
+    [SerializeField] private PlayerCharacter Sender;
     public string[] Items;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,7 +47,9 @@ public class inventorycontroller : MonoBehaviour
         Items = new string[] {};
         //Items = Items.Append("ball").ToArray();
         //Debug.Log(Items[0]);
-
+        
+        Sender.addStickevent += addStick;
+        Sender.addPizzaevent += addPizza;
         
     
     }   

@@ -1,9 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    
     public Tilemap tilemap;
     public Tilemap collidables;
     public Tilemap collectables;
@@ -34,6 +34,12 @@ public class PlayerCharacter : MonoBehaviour
 
 
     int getWeapon = 1;
+
+
+
+    //Collectable Events
+    public event Action addPizzaevent;
+    public event Action addStickevent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -197,13 +203,13 @@ void HandleInteraction()
     {
         if (tile == stick)
             {
-                getWeapon += 1;
-                Debug.Log("You got a weapon!");
+                addStickevent.Invoke();
+                Debug.Log("You got a stick!");
             }
         if (tile == pizza)
             {
                 {
-                getWeapon += 1;
+                addPizzaevent.Invoke();
                 Debug.Log("You got a pizza!");
                 }
             }
