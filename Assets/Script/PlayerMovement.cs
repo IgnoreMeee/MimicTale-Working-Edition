@@ -1,14 +1,15 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    
     public Tilemap tilemap;
     public Tilemap collidables;
     public Tilemap collectables;
     public Tilemap stones;
-    public TileBase weapon;
+    public TileBase stick;
+    public TileBase pizza;
 
     float collisionUp;
     float collisionDown;
@@ -33,6 +34,12 @@ public class PlayerCharacter : MonoBehaviour
 
 
     int getWeapon = 1;
+
+
+
+    //Collectable Events
+    public event Action addPizzaevent;
+    public event Action addStickevent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -191,11 +198,22 @@ void HandleInteraction()
     if (!Input.GetKeyDown(KeyCode.F)) return;
 
     Vector3Int targetCell = currentCell + facingDir;
+    TileBase tile = collectables.GetTile(targetCell);
 
-    if (collectables.GetTile(targetCell) != null)
+    if (tile != null )
     {
-        getWeapon += 1;
-        Debug.Log("You got a weapon!");
+        if (tile == stick)
+            {
+                addStickevent.Invoke();
+                Debug.Log("You got a stick!");
+            }
+        if (tile == pizza)
+            {
+                {
+                addPizzaevent.Invoke();
+                Debug.Log("You got a pizza!");
+                }
+            }
         collectables.SetTile(targetCell, null);
         return;
     }
