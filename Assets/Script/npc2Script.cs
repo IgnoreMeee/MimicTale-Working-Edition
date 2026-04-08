@@ -5,11 +5,10 @@ public class npc2Script : MonoBehaviour
     [SerializeField] private DialogueObject _dialogueContent;
     public GameObject talk;
     [SerializeField] float interactRange = 2f;
-    private Transform player;
+    [SerializeField] Transform player;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
@@ -19,7 +18,7 @@ public class npc2Script : MonoBehaviour
 
         if (distance <= interactRange)
         {
-            talk.SetActive(true); 
+            // talk.SetActive(true); 
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -27,10 +26,10 @@ public class npc2Script : MonoBehaviour
                 DialogueUI.Instance.StartDialogue(_dialogueContent, true);
             }
         }
-        else
-        {
-            talk.SetActive(false);
-        }
+        // else
+        // {
+        //     talk.SetActive(false);
+        // }
     }
     
 }

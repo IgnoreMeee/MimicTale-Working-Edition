@@ -52,8 +52,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         PlayerTilePos();
         Collisions();
-        // GetItemPickup();
-        // StoneCollision();
+        
         HandleInteraction();
 
         FixCollisions();
@@ -237,6 +236,7 @@ void PushStone(Vector3Int dir)
     // no override allowed!!!!
     if (stones.GetTile(targetPos) != null) return;
     if (collidables.GetTile(targetPos) != null) return;
+    if (collectables.GetTile(targetPos) != null) return;
 
     //push
     TileBase stone = stones.GetTile(stonePos);

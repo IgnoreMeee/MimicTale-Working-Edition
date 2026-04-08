@@ -153,6 +153,7 @@ MonoBehaviour:
   _dialogueContent: {fileID: 11400000, guid: 94a8acd9232e94ad0b13430c72eaf92b, type: 2}
   talk: {fileID: 836122025}
   interactRange: 2
+  player: {fileID: 559059984}
 --- !u!61 &127173602
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1283,6 +1284,7 @@ MonoBehaviour:
   _dialogueContent: {fileID: 11400000, guid: e05f5dfa33ca946d4a7eac871ef22a95, type: 2}
   talk: {fileID: 836122025}
   interactRange: 2
+  player: {fileID: 559059984}
 --- !u!1 &1702247397
 GameObject:
   m_ObjectHideFlags: 0
