@@ -52,6 +52,12 @@ public class inventorycontroller : MonoBehaviour
         Sender.addStickevent += addStick;
         Sender.addPizzaevent += addPizza;
         Sender.addKeyevent += addKey;
+
+        if (key == 2)
+        {
+            Debug.Log("door open");
+        } 
+       
         
     
     }   

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5d3e5d254f814630af75a3ff5cadf10, type: 3}
-  m_Name: New Dialogue Object
+  m_Name: NPChelper
   m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
   dialogue:
   - 'Hello Young Traveler! It seems you are new around here... may I tell you of
