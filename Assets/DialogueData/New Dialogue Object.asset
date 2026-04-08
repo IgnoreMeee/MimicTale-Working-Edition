@@ -13,10 +13,16 @@ MonoBehaviour:
   m_Name: New Dialogue Object
   m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
   dialogue:
-  - 'Hi I am green box, what is your name? '
-  - "Nice to meet you white box. \nNice hair by the way."
-  - 'I gotta go.
-
-
-'
-  portrait: {fileID: -1347532211411968617, guid: 4f4049c2d3a90a64e894936300af3fab, type: 3}
+  - 'Hello Young Traveler! It seems you are new around here... may I tell you of
+    a great tale passed down for generations? '
+  - It is foretold that the chosen one will obtain the keys and unlock the great
+    north door to banish the Sentinel One.
+  - Say, you want to search for these keys? Well they're just to our left and right.
+  - I warn you however young traveler, there are many vicious monsters who roam these
+    lands.
+  - 'I would greatly advise you to pick up useful items along the way that may aid
+    you in battle. '
+  - 'You also might want to speak with the other townsfolk to learn more about these
+    lands. '
+  - Good luck young traveler. I fear you may need it.
+  portrait: {fileID: -4786132149333952748, guid: e753e02afcfcc4bbc9ae4e6c75568636, type: 3}

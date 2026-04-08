@@ -10,6 +10,8 @@ public class PlayerCharacter : MonoBehaviour
     public Tilemap stones;
     public TileBase stick;
     public TileBase pizza;
+    public TileBase plate1;
+    public TileBase plate2;
 
     float collisionUp;
     float collisionDown;
@@ -31,6 +33,8 @@ public class PlayerCharacter : MonoBehaviour
     Vector3Int currentCell;
     
     Vector3Int facingDir = Vector3Int.down;
+
+    Vector3Int puzzle1door = new Vector3Int(54, 4, 0);
 
 
     int getWeapon = 1;
@@ -237,6 +241,21 @@ void PushStone(Vector3Int dir)
     if (stones.GetTile(targetPos) != null) return;
     if (collidables.GetTile(targetPos) != null) return;
     if (collectables.GetTile(targetPos) != null) return;
+
+
+    //puzzle plate checks
+    if(tilemap.GetTile(targetPos) == plate1)
+        {
+            collidables.SetTile(puzzle1door, null);
+            puzzle1door.y++; 
+            collidables.SetTile(puzzle1door, null);
+            puzzle1door.y -= 2;
+            collidables.SetTile(puzzle1door, null);
+        }
+    if(tilemap.GetTile(targetPos) == plate2)
+        {
+            
+        }
 
     //push
     TileBase stone = stones.GetTile(stonePos);
