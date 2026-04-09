@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class SoulMovement : MonoBehaviour
 {
     BattleManager bm;
@@ -24,12 +24,18 @@ public class SoulMovement : MonoBehaviour
 
     void Update()
     {
+        if (hp <= 0)
+            {
+                Debug.Log("you died");
+                SceneManager.LoadScene("LoseScene");
+            }
+
         if (bm.isPlayerTurn)
-        {
-            PlayerTurnMovement();
-        } else {
-            EnemyTurnMovement();
-        }
+            {
+                PlayerTurnMovement();
+            } else {
+                EnemyTurnMovement();
+            }
 
         // Debug.Log("X:" + rb.position.x + " Y:" + rb.position.y);
     }

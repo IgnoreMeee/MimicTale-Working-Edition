@@ -57,7 +57,6 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject closeddoor;
     public GameObject opendoor;
 
-    public CheckPoint checkpoint;
     public Inventorycontroller inventory;
 
 
@@ -68,15 +67,7 @@ public class PlayerCharacter : MonoBehaviour
     public event Action addKeyevent;
 
 
-    public bool isInvincible = true;
-
-    IEnumerator Start()
-    {
-        checkpoint.LoadGame();
-
-        yield return new WaitForSeconds(1f); 
-        isInvincible = false;
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -107,6 +98,11 @@ public class PlayerCharacter : MonoBehaviour
             facingDir = Vector3Int.up;
         } else if (moveY < 0){
             facingDir = Vector3Int.down;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SceneManager.LoadScene("BattleSceneRealThisTime");
         }
 
         if (playerposition == teleporter)

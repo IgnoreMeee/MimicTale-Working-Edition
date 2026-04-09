@@ -12,7 +12,6 @@ public class CheckPoint : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
         Debug.Log("Editor mode: Save cleared");
@@ -43,10 +42,8 @@ public class CheckPoint : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("PlayerX"))
         {
-            float x = PlayerPrefs.GetFloat("PlayerX");
-            float y = PlayerPrefs.GetFloat("PlayerY");
 
-            player.position = new Vector3(x+1, y+1, 0);
+            player.position = new Vector3(3.5f, 34f, 0f);
         }
         else
         {

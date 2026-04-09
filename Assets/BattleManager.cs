@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -355,6 +356,20 @@ public class BattleManager : MonoBehaviour
         }
         switchToEnemyTurn();
 
+        bool allDead = true;
+        foreach (int hp in enemyHealth.Values)
+        {
+            if (hp > 0)
+            {
+                allDead = false;
+                break;
+            }
+        }
+
+        if (allDead)
+        {
+            SceneManager.LoadScene("WinScene");
+        }
     }
 
     void switchToEnemyTurn()

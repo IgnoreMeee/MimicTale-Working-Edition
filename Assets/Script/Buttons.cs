@@ -12,7 +12,7 @@ public class Buttons : MonoBehaviour
 
     public void BackButton()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("MenuScreen");
     }
 
     public void ContinueButton()
