@@ -11,6 +11,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleSceneRealThisTime.unity
     guid: 786cab2a0575c12498b41867c2d2c932
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: 9a6751e61e8b24e03a75da94b081a147
+  - enabled: 1
+    path: Assets/Scenes/MenuScreen.unity
+    guid: 95705f97cfc3d44858673d716efc506f
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: ea670e2427bec4f82b2ce07296ac6c5b
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
