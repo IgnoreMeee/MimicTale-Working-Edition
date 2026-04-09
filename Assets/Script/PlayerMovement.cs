@@ -1,15 +1,27 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Tilemaps;
+using System.Collections; 
+
 
 public class PlayerCharacter : MonoBehaviour
 {
+    
+    public inventorycontroller inventory;
     public Tilemap tilemap;
     public Tilemap collidables;
     public Tilemap collectables;
     public Tilemap stones;
     public TileBase stick;
     public TileBase pizza;
+    public TileBase key;
+    public TileBase plate1;
+    public TileBase plate2;
+    public TileBase stone;
+    public TileBase redo;
+    public TileBase bigdoor;
+
 
     float collisionUp;
     float collisionDown;
@@ -32,19 +44,35 @@ public class PlayerCharacter : MonoBehaviour
     
     Vector3Int facingDir = Vector3Int.down;
 
+    Vector3Int puzzle1door = new Vector3Int(54, 4, 0);
+    Vector3Int puzzle2door = new Vector3Int(-62, 4, 0);
+    Vector3Int finaldoor = new Vector3Int(1, 34, 0);
 
-    int getWeapon = 1;
+    Vector3Int currentStonePos;
+    Vector3Int originalStone1Pos = new Vector3Int(41, 4, 0);
+    Vector3Int originalStone2Pos = new Vector3Int(-46, 4, 0);
+
+    public GameObject closeddoor;
+    public GameObject opendoor;
+
+    public CheckPoint checkpoint;
 
 
 
     //Collectable Events
     public event Action addPizzaevent;
     public event Action addStickevent;
+    public event Action addKeyevent;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public bool isInvincible = true;
+
+    IEnumerator Start()
     {
+        checkpoint.LoadGame();
 
+        yield return new WaitForSeconds(1f); 
+        isInvincible = false;
     }
 
     // Update is called once per frame
@@ -198,6 +226,7 @@ void HandleInteraction()
 
     Vector3Int targetCell = currentCell + facingDir;
     TileBase tile = collectables.GetTile(targetCell);
+    TileBase targetcollidable = collidables.GetTile(targetCell);
 
     if (tile != null )
     {
@@ -213,9 +242,37 @@ void HandleInteraction()
                 Debug.Log("You got a pizza!");
                 }
             }
+        if (tile == key)
+            {
+                addKeyevent.Invoke();
+                Debug.Log("You got a key!");
+            }
         collectables.SetTile(targetCell, null);
         return;
     }
+
+    if(targetcollidable == redo)
+        {
+            stones.SetTile(currentStonePos, null);
+            stones.SetTile(originalStone1Pos, stone);
+            stones.SetTile(originalStone2Pos, stone);
+            Debug.Log(currentStonePos);
+        }
+
+    if(targetcollidable == bigdoor)
+        {
+            if(inventory.key == 2)
+            {
+                closeddoor.SetActive(false);
+                opendoor.SetActive(true);
+
+                for(int i = 0; i < 5; i++)
+                {
+                    collidables.SetTile(finaldoor, null);
+                    finaldoor.x += 1;
+                }
+            }
+        }
 
     if (stones.GetTile(targetCell) != null)
     {
@@ -230,6 +287,7 @@ void PushStone(Vector3Int dir)
     Vector3Int stonePos = currentCell + dir;
     // getting the new location
     Vector3Int targetPos = stonePos + dir;
+    
 
      if (stones.GetTile(stonePos) == null) return;
 
@@ -238,10 +296,32 @@ void PushStone(Vector3Int dir)
     if (collidables.GetTile(targetPos) != null) return;
     if (collectables.GetTile(targetPos) != null) return;
 
+
+    //puzzle plate checks
+    if(tilemap.GetTile(targetPos) == plate1)
+        {
+            collidables.SetTile(puzzle1door, null);
+            puzzle1door.y++; 
+            collidables.SetTile(puzzle1door, null);
+            puzzle1door.y -= 2;
+            collidables.SetTile(puzzle1door, null);
+            puzzle1door.y++;
+        }
+    if(tilemap.GetTile(targetPos) == plate2)
+        {
+            collidables.SetTile(puzzle2door, null);
+            puzzle2door.y++;
+            collidables.SetTile(puzzle2door, null);
+            puzzle2door.y -= 2;
+            collidables.SetTile(puzzle2door, null);
+            puzzle2door.y++;
+        }
+
     //push
     TileBase stone = stones.GetTile(stonePos);
     stones.SetTile(stonePos, null);
     stones.SetTile(targetPos, stone);
+    currentStonePos = targetPos;
 }
 
 }

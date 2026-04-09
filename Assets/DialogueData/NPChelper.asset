@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d3e5d254f814630af75a3ff5cadf10, type: 3}
+  m_Name: NPChelper
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
+  dialogue:
+  - 'Hello Young Traveler! It seems you are new around here... may I tell you of
+    a great tale passed down for generations? '
+  - It is foretold that the chosen one will obtain the keys and unlock the great
+    north door to banish the Sentinel One.
+  - Say, you want to search for these keys? Well they're just to our left and right.
+  - I warn you however young traveler, there are many vicious monsters who roam these
+    lands.
+  - 'I would greatly advise you to pick up useful items along the way that may aid
+    you in battle. '
+  - 'You also might want to speak with the other townsfolk to learn more about these
+    lands. '
+  - Good luck young traveler. I fear you may need it.
+  portrait: {fileID: -4786132149333952748, guid: e753e02afcfcc4bbc9ae4e6c75568636, type: 3}
