@@ -23,7 +23,7 @@ public class npc1Script : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                player.position = new Vector3(transform.position.x - 3, transform.position.y, 0f);
+                //player.position = new Vector3(transform.position.x - 3, transform.position.y, 0f);
                 DialogueUI.Instance.StartDialogue(_dialogueContent, false);
             }
         }
