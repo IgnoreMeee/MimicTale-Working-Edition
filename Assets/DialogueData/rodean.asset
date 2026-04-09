@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: rodean
   m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
   dialogue:
-  - I hate this stupid game
-  - I hate this stupid game
-  portrait: {fileID: -6874573862522964227, guid: 2463b56e28e644034bdcb0575abe57ac, type: 3}
+  - I can feel it...
+  - There is something ominous behind this door...
+  - I wish mercy on whoever walks through these gates...
+  portrait: {fileID: 8713928777862302283, guid: 9f013d12901ef4f689e935b3b2152ffa, type: 3}
