@@ -22,6 +22,7 @@ public class PlayerCharacter : MonoBehaviour
     public TileBase stone;
     public TileBase redo;
     public TileBase bigdoor;
+    public TileBase teleporter;
 
 
     float collisionUp;
@@ -90,6 +91,7 @@ public class PlayerCharacter : MonoBehaviour
         Move();
 
         playerPos = transform.position;
+        TileBase playerposition = tilemap.GetTile(currentCell);
 
 
         // identify which direction player is facing
@@ -107,7 +109,7 @@ public class PlayerCharacter : MonoBehaviour
             facingDir = Vector3Int.down;
         }
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (playerposition == teleporter)
         {
             SceneManager.LoadScene("BattleSceneRealThisTime");
         }
