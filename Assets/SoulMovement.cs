@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ public class SoulMovement : MonoBehaviour
     float playerVelX = 0f;
     float playerVelY = 0f;
     public float playerVel = 5f;
+    public TextMeshProUGUI health;
     public int hp = 20;
     Vector2 movement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,6 +40,8 @@ public class SoulMovement : MonoBehaviour
             }
 
         // Debug.Log("X:" + rb.position.x + " Y:" + rb.position.y);
+
+        health.text = "HP: " + hp;
     }
 
     void FixedUpdate()

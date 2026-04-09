@@ -34,7 +34,7 @@ public class BattleManager : MonoBehaviour
     public bool isPlayerTurn = true;
 
     bool enterLock = false;
-    string[] enemyList = new string[] {"Dummy 1", "Dummy 2"};
+    string[] enemyList = new string[] {"Gans"};
     string[] itemList = new string[] {"Pizza", "Stick"};
     
     Dictionary<string, int> enemyHealth = new Dictionary<string, int>();
