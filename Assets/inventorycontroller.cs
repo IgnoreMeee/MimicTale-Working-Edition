@@ -40,6 +40,20 @@ public class inventorycontroller : MonoBehaviour
 
     [SerializeField] private PlayerCharacter Sender;
     public string[] Items;
+    public static inventorycontroller Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

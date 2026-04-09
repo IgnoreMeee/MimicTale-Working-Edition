@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerCharacter : MonoBehaviour
@@ -75,6 +76,11 @@ public class PlayerCharacter : MonoBehaviour
             facingDir = Vector3Int.up;
         } else if (moveY < 0){
             facingDir = Vector3Int.down;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SceneManager.LoadScene("BattleSceneRealThisTime");
         }
     }
 
