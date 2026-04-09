@@ -1,0 +1,600 @@
+fileFormatVersion: 2
+guid: f5ab27149e47b4013b47f785b221547d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6768111752863914015
+    second: rodean_spritesheet_0
+  - first:
+      213: -5689863909392264804
+    second: rodean_spritesheet_1
+  - first:
+      213: -2009129529589418335
+    second: rodean_spritesheet_2
+  - first:
+      213: -167619656357711657
+    second: rodean_spritesheet_3
+  - first:
+      213: 8762010634249924874
+    second: rodean_spritesheet_4
+  - first:
+      213: 8677848396231156277
+    second: rodean_spritesheet_5
+  - first:
+      213: 6365210371930826043
+    second: rodean_spritesheet_6
+  - first:
+      213: -2194253598080687177
+    second: rodean_spritesheet_7
+  - first:
+      213: 7645652748817924231
+    second: rodean_spritesheet_8
+  - first:
+      213: -6409595230828124846
+    second: rodean_spritesheet_9
+  - first:
+      213: 859878945574801098
+    second: rodean_spritesheet_10
+  - first:
+      213: 2345952858459868491
+    second: rodean_spritesheet_11
+  - first:
+      213: 2523391338018034069
+    second: rodean_spritesheet_12
+  - first:
+      213: 4524618073925738430
+    second: rodean_spritesheet_13
+  - first:
+      213: -6754657260180332559
+    second: rodean_spritesheet_14
+  - first:
+      213: -660613402514311660
+    second: rodean_spritesheet_15
+  - first:
+      213: -5594210339995457954
+    second: rodean_spritesheet_16
+  - first:
+      213: -4728075493092950077
+    second: rodean_spritesheet_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: rodean_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 834
+        width: 173
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f18999db7c92ded50800000000000000
+      internalID: 6768111752863914015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 831
+        width: 242
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c91db5cabea8901b0800000000000000
+      internalID: -5689863909392264804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 830
+        width: 178
+        height: 241
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6331176532e14e0800000000000000
+      internalID: -2009129529589418335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 828
+        width: 195
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d0fc658fce7cadf0800000000000000
+      internalID: -167619656357711657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 543
+        width: 239
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0179acaf3ae89970800000000000000
+      internalID: 8762010634249924874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 532
+        width: 253
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5322d00a329ed6870800000000000000
+      internalID: 8677848396231156277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 539
+        width: 253
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b35a193eb15c55850800000000000000
+      internalID: 6365210371930826043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 654
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b3274b6af17c81e0800000000000000
+      internalID: -2194253598080687177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 540
+        width: 192
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7800849aaa0da1a60800000000000000
+      internalID: 7645652748817924231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 654
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255a378d81b8c07a0800000000000000
+      internalID: -6409595230828124846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 636
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acec2dc5857eeeb00800000000000000
+      internalID: 859878945574801098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 636
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4d005402bf7e8020800000000000000
+      internalID: 2345952858459868491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 204
+        width: 277
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 591dcdb6d03e40320800000000000000
+      internalID: 2523391338018034069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 343
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebfd7a07a2caace30800000000000000
+      internalID: 4524618073925738430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 219
+        width: 202
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ff10737203a242a0800000000000000
+      internalID: -6754657260180332559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 343
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 416b5494c9705d6f0800000000000000
+      internalID: -660613402514311660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 323
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e56e0cdc55f5d52b0800000000000000
+      internalID: -5594210339995457954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rodean_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 323
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cff6f2b360826eb0800000000000000
+      internalID: -4728075493092950077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7c3f27817ee654713b897547536db786
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      rodean_spritesheet_0: 6768111752863914015
+      rodean_spritesheet_1: -5689863909392264804
+      rodean_spritesheet_10: 859878945574801098
+      rodean_spritesheet_11: 2345952858459868491
+      rodean_spritesheet_12: 2523391338018034069
+      rodean_spritesheet_13: 4524618073925738430
+      rodean_spritesheet_14: -6754657260180332559
+      rodean_spritesheet_15: -660613402514311660
+      rodean_spritesheet_16: -5594210339995457954
+      rodean_spritesheet_17: -4728075493092950077
+      rodean_spritesheet_2: -2009129529589418335
+      rodean_spritesheet_3: -167619656357711657
+      rodean_spritesheet_4: 8762010634249924874
+      rodean_spritesheet_5: 8677848396231156277
+      rodean_spritesheet_6: 6365210371930826043
+      rodean_spritesheet_7: -2194253598080687177
+      rodean_spritesheet_8: 7645652748817924231
+      rodean_spritesheet_9: -6409595230828124846
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

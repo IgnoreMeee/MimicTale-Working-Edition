@@ -56,6 +56,10 @@ public class PlayerCharacter : MonoBehaviour
 
     public GameObject closeddoor;
     public GameObject opendoor;
+    public SpriteRenderer rodeanfront;
+    public SpriteRenderer rodeanright;
+    public SpriteRenderer rodeanleft;
+    public SpriteRenderer rodeanback;
 
     public CheckPoint checkpoint;
     public Inventorycontroller inventory;
@@ -126,24 +130,42 @@ public class PlayerCharacter : MonoBehaviour
         playerVelX = 0f;
         playerVelY = 0f;
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)){
+            rodeanfront.enabled = false;
+            rodeanleft.enabled = false;
+            rodeanright.enabled = false;
+            rodeanback.enabled = true;
             if (transform.position.y < collisionUp) {
             playerVelY += playerVel;}
-
-         if (Input.GetKey(KeyCode.S))
+        }
+         if (Input.GetKey(KeyCode.S)){
+            rodeanfront.enabled = true;
+            rodeanleft.enabled = false;
+            rodeanright.enabled = false;
+            rodeanback.enabled = false;
             if (transform.position.y > collisionDown) {
                 playerVelY += -playerVel;}
+         }  
 
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) {
             playerVelY = 0f;}
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)){
+            rodeanfront.enabled = false;
+            rodeanleft.enabled = true;
+            rodeanright.enabled = false;
+            rodeanback.enabled = false;
             if (transform.position.x > collisionLeft) {
                 playerVelX += -playerVel;}
-
-        if (Input.GetKey(KeyCode.D))
+        }
+        if (Input.GetKey(KeyCode.D)){
+            rodeanfront.enabled = false;
+            rodeanleft.enabled = false;
+            rodeanright.enabled = true;
+            rodeanback.enabled = false;
             if (transform.position.x < collisionRight) {
                 playerVelX += playerVel;}
+        }
 
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
             playerVelX = 0f;
