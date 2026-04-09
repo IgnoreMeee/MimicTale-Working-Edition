@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Tilemaps;
+using System.Collections; 
+
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -53,9 +55,7 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject closeddoor;
     public GameObject opendoor;
 
-
-    int getWeapon = 1;
-
+    public CheckPoint checkpoint;
 
 
 
@@ -64,10 +64,15 @@ public class PlayerCharacter : MonoBehaviour
     public event Action addStickevent;
     public event Action addKeyevent;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
+    public bool isInvincible = true;
+
+    IEnumerator Start()
+    {
+        checkpoint.LoadGame();
+
+        yield return new WaitForSeconds(1f); 
+        isInvincible = false;
     }
 
     // Update is called once per frame

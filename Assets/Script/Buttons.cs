@@ -24,12 +24,16 @@ public class Buttons : MonoBehaviour
     public void QuitButton()
     {
         Debug.Log("quit!");
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
         Application.Quit();
     }
     public void LeaveButton()
     {
         Debug.Log("quit!");
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
         Application.Quit();
     }
-    
+
 }
