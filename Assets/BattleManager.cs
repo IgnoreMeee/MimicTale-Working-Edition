@@ -11,7 +11,7 @@ public class BattleManager : MonoBehaviour
     GameObject bottomRect;
     GameObject leftRect;
     GameObject rightRect;
-    inventorycontroller ic = inventorycontroller.Instance;
+    Inventorycontroller ic = Inventorycontroller.Instance;
     AttackPatterns ap;
 
     bool loadedFightText = false;
@@ -46,7 +46,7 @@ public class BattleManager : MonoBehaviour
         leftRect = GameObject.Find("leftRect");
         rightRect = GameObject.Find("rightRect");
         sm = GameObject.Find("Soul").GetComponent<SoulMovement>();
-        ic = inventorycontroller.Instance;
+        ic = Inventorycontroller.Instance;
         ap = GameObject.Find("AttackPatterns").GetComponent<AttackPatterns>();
 
         foreach (string enemy in enemyList)

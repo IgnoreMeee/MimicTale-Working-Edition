@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Tilemaps;
 using System.Collections; 
+using UnityEngine.SceneManagement;
 
 
 public class PlayerCharacter : MonoBehaviour
@@ -104,6 +105,11 @@ public class PlayerCharacter : MonoBehaviour
             facingDir = Vector3Int.up;
         } else if (moveY < 0){
             facingDir = Vector3Int.down;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SceneManager.LoadScene("BattleSceneRealThisTime");
         }
     }
 
