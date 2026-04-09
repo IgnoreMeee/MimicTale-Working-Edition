@@ -12,6 +12,8 @@ public class BattleManager : MonoBehaviour
     GameObject bottomRect;
     GameObject leftRect;
     GameObject rightRect;
+    public GameObject fightbutton;
+    public GameObject itembutton;
     Inventorycontroller ic = Inventorycontroller.Instance;
     AttackPatterns ap;
 
@@ -136,6 +138,8 @@ public class BattleManager : MonoBehaviour
         playerMenuOption = menuOptions[menuIndex];
 
         PlayerMenu();
+        fightbutton.SetActive(true);
+        itembutton.SetActive(true);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -184,6 +188,8 @@ public class BattleManager : MonoBehaviour
         bottomRect.SetActive(true);
         leftRect.SetActive(true);
         rightRect.SetActive(true);
+        fightbutton.SetActive(false);
+        itembutton.SetActive(false);
 
         // topRect.transform.position = new Vector3(0.22f, 0.95f, 0f); //0.22f, 0.95f, 0f
         // topRect.transform.localScale = new Vector3(5.877419f, 0.3060362f, 1f); //5.877419f, 0.3060362f, 1f
@@ -213,13 +219,13 @@ public class BattleManager : MonoBehaviour
         switch (playerMenuOption)
         {
             case "Fight":
-                sm.rb.position = new Vector3(-8.78f, -3.61f, 0f);
+                sm.rb.position = new Vector3(-4.58f, -3.61f, 0f);
                 break;
             case "Act":
                 sm.rb.position = new Vector3(-3.78f, -3.61f, 0f);
                 break;
             case "Item":
-                sm.rb.position = new Vector3(2.78f, -3.61f, 0f);
+                sm.rb.position = new Vector3(1.02f, -3.61f, 0f);
                 break;
             case "Mercy":
                 sm.rb.position = new Vector3(7.78f, -3.61f, 0f);
