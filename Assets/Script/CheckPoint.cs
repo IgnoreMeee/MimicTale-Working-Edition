@@ -4,7 +4,7 @@ public class CheckPoint : MonoBehaviour
 {
     public Transform spawnpoint;
     public Transform player;
-    public inventorycontroller inventory;
+    public Inventorycontroller inventory;
     
 
 

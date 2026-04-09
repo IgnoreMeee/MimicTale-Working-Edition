@@ -8,7 +8,7 @@ using System.Collections;
 public class PlayerCharacter : MonoBehaviour
 {
     
-    public inventorycontroller inventory;
+    
     public Tilemap tilemap;
     public Tilemap collidables;
     public Tilemap collectables;
@@ -56,6 +56,7 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject opendoor;
 
     public CheckPoint checkpoint;
+    public Inventorycontroller inventory;
 
 
 

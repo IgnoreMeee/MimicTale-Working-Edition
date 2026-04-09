@@ -5,7 +5,7 @@ using System.Linq;
 using System;
 using TMPro;
 
-public class inventorycontroller : MonoBehaviour
+public class Inventorycontroller : MonoBehaviour
 {
     // Pairing with Items
     public TextMeshProUGUI item1;
@@ -41,6 +41,20 @@ public class inventorycontroller : MonoBehaviour
 
     [SerializeField] private PlayerCharacter Sender;
     public string[] Items;
+    public static Inventorycontroller Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,8 +72,6 @@ public class inventorycontroller : MonoBehaviour
             Debug.Log("door open");
         } 
        
-        
-    
     }   
 
     // Update is called once per frame
