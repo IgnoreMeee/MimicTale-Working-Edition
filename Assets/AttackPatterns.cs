@@ -44,6 +44,8 @@ public class AttackPatterns : MonoBehaviour
             attacking = true;
             Debug.Log("Enemy Attacking with pattern " + attackChoice);
         }
+
+        
     }
 
     void moveLeftBullets() {
@@ -79,30 +81,49 @@ public class AttackPatterns : MonoBehaviour
     public IEnumerator Attack1(float delay)
     {
         for (int j = 0; j < 3; j ++) {
+        int startIndex = j * 3;
+        int endIndexExclusive = startIndex + 3;
         for (int i = 0; i < 3; i++)
         {
+            int bulletIndex = startIndex + i;
             GameObject bullet = Instantiate(bulletPrefab, new Vector3(bulletPrefab.transform.position.x + 15, bulletPrefab.transform.position.y - (i * 2f) + Random.Range(-1f, 2f), 0), Quaternion.identity);
             bullet.SetActive(true);
-            rightBullets[i] = bullet;
+            rightBullets[bulletIndex] = bullet;
         }
 
         yield return new WaitForSeconds(delay);
 
         for (int i = 0; i < 3; i++)
         {
+            int bulletIndex = startIndex + i;
             GameObject bullet = Instantiate(bulletPrefab, new Vector3(bulletPrefab.transform.position.x + 2, bulletPrefab.transform.position.y - (i * 2f) + Random.Range(-1f, 2f), 0), Quaternion.identity);
             bullet.SetActive(true);
-            leftBullets[i] = bullet;
+            leftBullets[bulletIndex] = bullet;
         }
 
         yield return new WaitForSeconds(delay - 0.95f);
-        for (int i = 0; i < 3; i++) moveRightSet[i] = true;
+        for (int i = startIndex; i < endIndexExclusive; i++) moveRightSet[i] = true;
         yield return new WaitForSeconds(delay - 0.95f);
-        for (int i = 0; i < 3; i++) moveLeftSet[i] = true;
+        for (int i = startIndex; i < endIndexExclusive; i++) moveLeftSet[i] = true;
         yield return new WaitForSeconds(delay);
 
-        for (int i = 0; i < 3; i++) moveLeftSet[i] = false;
-        for (int i = 0; i < 3; i++) moveRightSet[i] = false;
+        for (int i = startIndex; i < endIndexExclusive; i++) moveLeftSet[i] = false;
+        for (int i = startIndex; i < endIndexExclusive; i++) moveRightSet[i] = false;
+
+        for (int i = startIndex; i < endIndexExclusive; i++)
+        {
+            if (leftBullets[i] != null)
+            {
+                Destroy(leftBullets[i]);
+                leftBullets[i] = null;
+            }
+
+            if (rightBullets[i] != null)
+            {
+                Destroy(rightBullets[i]);
+                rightBullets[i] = null;
+            }
+        }
         }
 
         bm.isPlayerTurn = true;
